@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Most Common BAS/HVAC Issues and How to Fix Them Fast</title>
+    <meta name="description" content="Troubleshoot the 5 most common building automation system (BAS) and HVAC problems. Field-tested solutions for sensor drift, communication failures, scheduling issues, and more.">
+    <meta name="keywords" content="BAS troubleshooting, HVAC common problems, building automation issues, BACnet troubleshooting, HVAC sensor calibration, BAS field guide">
+    <meta property="og:title" content="5 Most Common BAS/HVAC Issues and How to Fix Them Fast">
+    <meta property="og:description" content="Field-tested solutions for building automation problems that waste technician time.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://austinkc91.github.io/blog/hvac-bas-troubleshooting-common-issues.html">
+    <link rel="canonical" href="https://austinkc91.github.io/blog/hvac-bas-troubleshooting-common-issues.html">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "5 Most Common BAS/HVAC Issues and How to Fix Them Fast",
+        "description": "Troubleshoot the 5 most common building automation system and HVAC problems.",
+        "datePublished": "2026-03-14",
+        "author": {"@type": "Person", "name": "ClawCraft"},
+        "publisher": {"@type": "Organization", "name": "ClawCraft"}
+    }
+    </script>
+    <style>
+        :root { --bg: #0a0a0f; --surface: #13131a; --border: #2a2a3a; --text: #e8e8ed; --muted: #8888a0; --accent: #a78bfa; --green: #34d399; --orange: #fb923c; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; }
+        a { color: var(--accent); }
+        .nav { padding: 16px 20px; border-bottom: 1px solid var(--border); }
+        .nav a { color: var(--muted); font-size: 0.9rem; }
+        article { max-width: 720px; margin: 0 auto; padding: 60px 20px 80px; }
+        article h1 { font-size: 2.2rem; line-height: 1.3; margin-bottom: 16px; }
+        article .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 40px; }
+        article h2 { font-size: 1.5rem; margin: 40px 0 16px; color: var(--accent); }
+        article h3 { font-size: 1.1rem; margin: 24px 0 12px; color: var(--green); }
+        article p { margin-bottom: 20px; color: #ccc; }
+        article ul, article ol { margin: 0 0 20px 24px; color: #ccc; }
+        article li { margin-bottom: 8px; }
+        .fix-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 20px 0; }
+        .fix-box .label { color: var(--orange); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 8px; }
+        .cta-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; text-align: center; margin: 40px 0; }
+        .cta-box h3 { margin-bottom: 12px; color: var(--text); }
+        .cta-box p { color: var(--muted); }
+        .cta-box a.btn { display: inline-block; margin-top: 16px; padding: 12px 32px; background: var(--accent); color: #0a0a0f; border-radius: 8px; font-weight: 700; text-decoration: none; }
+        footer { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+<div class="nav"><a href="/">&larr; ClawCraft Home</a></div>
+<article>
+    <h1>5 Most Common BAS/HVAC Issues and How to Fix Them Fast</h1>
+    <p class="meta">Published March 14, 2026 &middot; 8 min read</p>
+
+    <p>Building automation systems keep facilities running efficiently, but when something goes wrong, diagnosing the issue can eat up hours of technician time. After working with dozens of BAS installations across commercial buildings, we've identified the five problems that account for the majority of service calls — and the fastest ways to resolve them.</p>
+
+    <h2>1. Temperature Sensor Drift</h2>
+    <p>Sensor drift is the most common and most insidious BAS issue. A space temperature sensor that reads 2-3 degrees off can cause constant occupant complaints, unnecessary energy waste, and control loop instability — all while the system appears to be operating normally.</p>
+
+    <h3>Symptoms</h3>
+    <ul>
+        <li>Occupant complaints about spaces being too hot or cold despite setpoints being met in the BAS</li>
+        <li>VAV boxes hunting or cycling excessively</li>
+        <li>Energy bills creeping up without obvious cause</li>
+        <li>Discharge air temps don't match what the AHU sensors report</li>
+    </ul>
+
+    <div class="fix-box">
+        <div class="label">Quick Fix Steps</div>
+        <ol>
+            <li>Compare BAS sensor reading against a calibrated handheld thermometer</li>
+            <li>Check if the sensor is in direct sunlight, near a heat source, or behind furniture</li>
+            <li>For RTD sensors: check wiring for corrosion or loose connections</li>
+            <li>For thermistors: compare resistance to the manufacturer's curve at current temperature</li>
+            <li>Apply an offset in the controller if the error is consistent (document the offset value)</li>
+            <li>Replace the sensor if drift exceeds 2 degrees F or is inconsistent</li>
+        </ol>
+    </div>
+
+    <p><strong>Pro tip:</strong> Schedule annual sensor verification for all critical zone sensors. It's cheaper than the callbacks.</p>
+
+    <h2>2. BACnet Communication Failures</h2>
+    <p>BACnet MS/TP and BACnet/IP communication issues can bring entire wings offline. These problems often appear intermittent, making them frustrating to diagnose.</p>
+
+    <h3>Symptoms</h3>
+    <ul>
+        <li>Controllers showing "offline" or "communication failure" in the head end</li>
+        <li>Intermittent data loss — points show stale values or go to fallback</li>
+        <li>Slow response when commanding points from the workstation</li>
+        <li>Multiple controllers dropping off the network simultaneously</li>
+    </ul>
+
+    <div class="fix-box">
+        <div class="label">Quick Fix Steps</div>
+        <ol>
+            <li><strong>MS/TP:</strong> Check trunk wiring for proper daisy-chain topology (no star or spur connections)</li>
+            <li>Verify end-of-line termination resistors (120 ohm) are present on both ends — and only on both ends</li>
+            <li>Check for duplicate MAC addresses on the trunk (use a BACnet scanner)</li>
+            <li>Ensure baud rate is consistent across all devices on the same trunk</li>
+            <li><strong>BACnet/IP:</strong> Verify IP addresses and subnet masks match the BAS network design</li>
+            <li>Check that BBMD (BACnet Broadcast Management Device) is configured correctly if crossing subnets</li>
+            <li>Look for network switch port errors or excessive broadcast traffic</li>
+        </ol>
+    </div>
+
+    <p><strong>Pro tip:</strong> Keep a BACnet network diagram with MAC addresses, IP addresses, and trunk routing. It cuts troubleshooting time in half.</p>
+
+    <h2>3. Schedule and Override Conflicts</h2>
+    <p>Schedules are supposed to be simple, but in practice they're one of the most common sources of occupant complaints. Buildings that are too hot on Monday morning, won't cool down on Saturday, or run equipment 24/7 usually have schedule configuration issues.</p>
+
+    <h3>Symptoms</h3>
+    <ul>
+        <li>Equipment running during unoccupied hours (wasting energy)</li>
+        <li>Spaces not conditioned when occupants arrive in the morning</li>
+        <li>Holiday schedules not working as expected</li>
+        <li>Permanent overrides left in place from months ago</li>
+    </ul>
+
+    <div class="fix-box">
+        <div class="label">Quick Fix Steps</div>
+        <ol>
+            <li>Check for active overrides on AHUs, VAVs, and central plant equipment — release any that aren't needed</li>
+            <li>Verify the BAS controller clock is correct (DST transitions are a common culprit)</li>
+            <li>Review schedule priority: holiday calendar should override weekly schedule</li>
+            <li>Check optimal start settings — if the building takes 2 hours to reach setpoint, start time needs adjustment</li>
+            <li>Audit all active schedules against the current occupancy pattern</li>
+        </ol>
+    </div>
+
+    <p><strong>Pro tip:</strong> Set a quarterly calendar reminder to audit overrides and schedules. Stale overrides are the #1 energy waster in managed buildings.</p>
+
+    <h2>4. Damper and Valve Actuator Failures</h2>
+    <p>Actuators are mechanical devices, and mechanical devices fail. A stuck damper or valve can make an entire zone uncontrollable, regardless of what the BAS is commanding.</p>
+
+    <h3>Symptoms</h3>
+    <ul>
+        <li>Zone temperature won't reach setpoint despite the BAS showing the correct command</li>
+        <li>Damper or valve position feedback doesn't match the command (e.g., commanded to 50% but feedback shows 0%)</li>
+        <li>Actuator makes grinding or clicking sounds</li>
+        <li>Airflow measurements don't change when damper position changes in the BAS</li>
+    </ul>
+
+    <div class="fix-box">
+        <div class="label">Quick Fix Steps</div>
+        <ol>
+            <li>Command the actuator to 0% and 100% from the BAS — physically verify it moves</li>
+            <li>Check the control signal voltage/current at the actuator terminals with a multimeter</li>
+            <li>For spring-return actuators: verify the spring is intact (disconnect power and see if it returns)</li>
+            <li>Check for mechanical binding — the damper blade or valve stem might be physically stuck</li>
+            <li>Verify the actuator is properly coupled to the damper/valve shaft (linkages can slip)</li>
+            <li>Test the feedback potentiometer by manually moving the actuator and watching the feedback signal</li>
+        </ol>
+    </div>
+
+    <h2>5. Sequence of Operations Misconfigurations</h2>
+    <p>The most complex issues arise when the programmed control logic doesn't match the intended sequence of operations. This can cause simultaneous heating and cooling, equipment short-cycling, or conditions where the system can't satisfy the load even though it has the capacity.</p>
+
+    <h3>Symptoms</h3>
+    <ul>
+        <li>Heating and cooling outputs both active simultaneously</li>
+        <li>Equipment cycling on and off rapidly (short-cycling)</li>
+        <li>Mixed air temperature doesn't respond logically to outdoor conditions</li>
+        <li>Economizer not engaging when outdoor conditions are favorable</li>
+    </ul>
+
+    <div class="fix-box">
+        <div class="label">Quick Fix Steps</div>
+        <ol>
+            <li>Compare the as-programmed sequence to the design engineer's sequence of operations document</li>
+            <li>Check PID loop tuning — aggressive gains cause oscillation and short-cycling</li>
+            <li>Verify deadbands between heating and cooling stages (minimum 2 degrees F recommended)</li>
+            <li>For economizers: verify the high-limit lockout setpoint and changeover logic matches local climate</li>
+            <li>Trend critical points (command, feedback, setpoint, process variable) over 24 hours to identify patterns</li>
+        </ol>
+    </div>
+
+    <div class="cta-box">
+        <h3>Want the Complete Troubleshooting Guide?</h3>
+        <p>The BAS Professional's Field Guide includes detailed flowcharts for every common issue, control sequence templates, commissioning checklists, and protocol quick-reference cards.</p>
+        <a href="https://austinkc91.github.io/bas-field-guide/" class="btn">Get the Field Guide ($14)</a>
+    </div>
+
+    <h2>Prevention Is Cheaper Than Repair</h2>
+    <p>Most BAS issues are preventable with regular maintenance. A quarterly checklist should include:</p>
+    <ul>
+        <li>Sensor calibration verification on critical zones</li>
+        <li>Override audit — release any unnecessary permanent overrides</li>
+        <li>Schedule review — ensure schedules match current occupancy</li>
+        <li>Network health check — look for communication errors in the BAS log</li>
+        <li>Actuator stroke test on critical dampers and valves</li>
+        <li>Controller battery check (for those with battery-backed clocks or programs)</li>
+    </ul>
+
+    <p>Building automation is powerful technology, but it requires ongoing attention. The buildings that perform best are the ones with technicians who understand both the technology and the mechanical systems it controls.</p>
+</article>
+<footer><p>&copy; 2026 <a href="/">ClawCraft</a></p></footer>
+<script data-goatcounter="https://textforge-tools.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
